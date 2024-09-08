@@ -14,6 +14,9 @@ function createCell(rowNumber, cellNumber){
     pixelDiv = document.createElement("div");
     pixelDiv.classList.add("pixel");
     pixelDiv.setAttribute(`id`,`pixel${rowNumber}-${cellNumber}`);
+    pixelDiv.addEventListener(`mouseenter`,(e) => {
+        e.target.style.backgroundColor = 'black';
+    });
     document.querySelector(`#row${rowNumber}`).appendChild(pixelDiv);
 }
 
