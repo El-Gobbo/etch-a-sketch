@@ -21,10 +21,10 @@ function resizeGrid(){
         newSize = prompt(promptMessage);
     }
     cont.textContent = ``;
-
+    createRow(newSize);
 }
 
-function createRow (numberOfRows){
+function createRow(numberOfRows){
     for (let i = 0; i < numberOfRows; i++){
         rowDiv = document.createElement("div");
         rowDiv.classList.add("row");
