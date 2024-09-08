@@ -1,7 +1,22 @@
 const cont = document.querySelector("#container");
+const button = document.querySelector("#resize")
 
 let rowDiv;
 let pixelDiv;
+
+button.addEventListener(`click`,resizeGrid);
+
+function resizeGrid(){
+    let promptMessage = `What dimensions do you want your grid to be (X by X)? Enter a number between 1 and 100.`;
+    let newSize = prompt(promptMessage)
+    while (typeof(newSize) !== 'number'
+        || newSize < 1
+        || newSize !== Math.round(newSize)){
+        alert(`Invalid input`);
+        newSize = prompt(promptMessage);
+    }
+    
+}
 
 function createRow (rowNumber){
     rowDiv = document.createElement("div");
@@ -19,6 +34,7 @@ function createCell(rowNumber, cellNumber){
     });
     document.querySelector(`#row${rowNumber}`).appendChild(pixelDiv);
 }
+
 
 for (let i = 0; i < 16;i++){
     createRow(i);
