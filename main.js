@@ -20,30 +20,30 @@ function resizeGrid(){
         alert(`Invalid input`);
         newSize = prompt(promptMessage);
     }
+    cont.textContent = ``;
 
 }
 
-function createRow (rowNumber){
-    rowDiv = document.createElement("div");
-    rowDiv.classList.add("row");
-    rowDiv.setAttribute(`id`,`row${rowNumber}`);
-    cont.appendChild(rowDiv);
-}
-
-function createCell(rowNumber, cellNumber){
-    pixelDiv = document.createElement("div");
-    pixelDiv.classList.add("pixel");
-    pixelDiv.setAttribute(`id`,`pixel${rowNumber}-${cellNumber}`);
-    pixelDiv.addEventListener(`mouseenter`,(e) => {
-        e.target.style.backgroundColor = 'black';
-    });
-    document.querySelector(`#row${rowNumber}`).appendChild(pixelDiv);
-}
-
-
-for (let i = 0; i < 16;i++){
-    createRow(i);
-    for (let j = 0; j < 16; j++){
-        createCell(i,j);
+function createRow (numberOfRows){
+    for (let i = 0; i < numberOfRows; i++){
+        rowDiv = document.createElement("div");
+        rowDiv.classList.add("row");
+        rowDiv.setAttribute(`id`,`row${i}`);
+        cont.appendChild(rowDiv);
+        createCell(numberOfRows, i);
     }
 }
+
+function createCell(numberOfRows,rowNumber){
+    for (let j = 0; j < numberOfRows; j++){
+        pixelDiv = document.createElement("div");
+        pixelDiv.classList.add("pixel");
+        pixelDiv.setAttribute(`id`,`pixel${rowNumber}-${j}`);
+        pixelDiv.addEventListener(`mouseenter`,(e) => {
+            e.target.style.backgroundColor = 'black';
+        });
+        document.querySelector(`#row${rowNumber}`).appendChild(pixelDiv);
+    }
+}
+
+createRow(16);
