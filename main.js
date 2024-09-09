@@ -3,8 +3,14 @@ const button = document.querySelector("#resize")
 
 let rowDiv;
 let pixelDiv;
+let targetPixel;
 
 button.addEventListener(`click`,resizeGrid);
+
+cont.addEventListener('mouseover',(e) =>{
+    targetPixel = '#' + e.target.id;
+    document.querySelector(targetPixel).style.backgroundColor = 'black';
+})
 
 function resizeGrid(){
     let promptMessage = `What dimensions do you want your grid to be (X by X)? Enter a number between 1 and 100.`;
@@ -37,9 +43,6 @@ function createCell(numberOfRows,rowNumber){
         pixelDiv = document.createElement("div");
         pixelDiv.classList.add("pixel");
         pixelDiv.setAttribute(`id`,`pixel${rowNumber}-${j}`);
-        pixelDiv.addEventListener(`mouseenter`,(e) => {
-            e.target.style.backgroundColor = 'black';
-        });
         document.querySelector(`#row${rowNumber}`).appendChild(pixelDiv);
     }
 }
