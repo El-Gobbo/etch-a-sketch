@@ -3,14 +3,15 @@ const button = document.querySelector("#resize")
 
 let rowDiv;
 let pixelDiv;
-let targetPixel;
+
 button.addEventListener(`click`,resizeGrid);
 
 cont.addEventListener('mouseover',(e) =>{
-    targetPixel = '#' + e.target.id;
-    document.querySelector(targetPixel).style.backgroundColor = randomColour();
-    document.querySelector(targetPixel).style.opacity += 0.1;
-    console.log(document.querySelector(targetPixel).style.opacity)
+    let targetPixelID = '#' + e.target.id;
+    let targetPixel = document.querySelector(targetPixelID);
+    targetPixel.style.backgroundColor = randomColour();
+    targetPixel.style.opacity += 0.1;
+
 })
 
 
