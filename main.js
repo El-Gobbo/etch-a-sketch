@@ -10,8 +10,10 @@ cont.addEventListener('mouseover',(e) =>{
     let targetPixelID = '#' + e.target.id;
     let targetPixel = document.querySelector(targetPixelID);
     targetPixel.style.backgroundColor = randomColour();
-    targetPixel.style.opacity += 0.1;
-
+    let currentOpacity = window.getComputedStyle(targetPixel).getPropertyValue(`opacity`);
+    let newOpacity = (Number(currentOpacity)*10 + 1)/10;
+    targetPixel.style.opacity = newOpacity;
+    console.log(targetPixel.style.opacity = newOpacity);
 })
 
 
