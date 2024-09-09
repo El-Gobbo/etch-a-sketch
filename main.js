@@ -9,6 +9,8 @@ button.addEventListener(`click`,resizeGrid);
 cont.addEventListener('mouseover',(e) =>{
     targetPixel = '#' + e.target.id;
     document.querySelector(targetPixel).style.backgroundColor = randomColour();
+    document.querySelector(targetPixel).style.opacity += 0.1;
+    console.log(document.querySelector(targetPixel).style.opacity)
 })
 
 
@@ -22,7 +24,6 @@ function randomColour(){
     let colour2 = randomRGB();
     let colour3 = randomRGB();
     let finalColour = `rgb(${colour1},${colour2},${colour3})`
-    console.log(finalColour);
     return finalColour;
 }
 
@@ -57,6 +58,7 @@ function createCell(numberOfRows,rowNumber){
         pixelDiv = document.createElement("div");
         pixelDiv.classList.add("pixel");
         pixelDiv.setAttribute(`id`,`pixel${rowNumber}-${j}`);
+        pixelDiv.style.opacity = 0;
         document.querySelector(`#row${rowNumber}`).appendChild(pixelDiv);
     }
 }
