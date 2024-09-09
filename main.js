@@ -4,13 +4,27 @@ const button = document.querySelector("#resize")
 let rowDiv;
 let pixelDiv;
 let targetPixel;
-
 button.addEventListener(`click`,resizeGrid);
 
 cont.addEventListener('mouseover',(e) =>{
     targetPixel = '#' + e.target.id;
-    document.querySelector(targetPixel).style.backgroundColor = 'black';
+    document.querySelector(targetPixel).style.backgroundColor = randomColour();
 })
+
+
+function randomColour(){
+    function randomRGB(){
+        let rGB = (Math.random()*255);
+        rGB = Math.floor(rGB);
+        return rGB;
+    }
+    let colour1 = randomRGB();
+    let colour2 = randomRGB();
+    let colour3 = randomRGB();
+    let finalColour = `rgb(${colour1},${colour2},${colour3})`
+    console.log(finalColour);
+    return finalColour;
+}
 
 function resizeGrid(){
     let promptMessage = `What dimensions do you want your grid to be (X by X)? Enter a number between 1 and 100.`;
